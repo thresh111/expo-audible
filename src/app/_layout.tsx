@@ -3,6 +3,7 @@ import { Slot } from "expo-router";
 import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { ClerkProvider } from "@clerk/clerk-expo";
+import { StatusBar } from "expo-status-bar";
 
 const theme = {
   ...DarkTheme,

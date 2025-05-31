@@ -2,6 +2,7 @@ import { Redirect, Stack } from "expo-router";
 
 import { useAuth } from "@clerk/clerk-expo";
 import { ActivityIndicator } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ProtectedLayout() {
   const { isSignedIn, isLoaded } = useAuth();
