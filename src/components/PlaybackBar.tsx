@@ -22,7 +22,7 @@ export default function PlaybackBar({ currentTime, duration, onSeek }: PlaybackB
         className="w-full bg-slate-900 h-2 rounded-full justify-center"
         onLayout={(event) => setLayoutX(event.nativeEvent.layout.width)}
         onTouchMove={handleSeek}
-        hitSlop={10}
+        hitSlop={20}
       >
         <View className="bg-orange-400 h-full rounded-full" style={{ width: `${progress * 100}%` }} />
         <View
