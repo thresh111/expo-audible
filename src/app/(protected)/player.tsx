@@ -25,7 +25,11 @@ export default function Player() {
       <View className={"gap-6 flex-1 justify-end w-full mb-8"}>
         <Text className="text-white text-2xl font-bold text-center">{book.title}</Text>
 
-        <PlaybackBar currentTime={playerStatus.currentTime} duration={playerStatus.duration} />
+        <PlaybackBar
+          currentTime={playerStatus.currentTime}
+          duration={playerStatus.duration}
+          onSeek={(seconds: number) => player.seekTo(seconds)}
+        />
 
         <View className="flex-row items-center justify-between mt-4">
           <Pressable className="p-2">
