@@ -2,6 +2,7 @@ import { useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import React from "react";
+import OAuth from "@/components/OAuth";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -72,6 +73,9 @@ export default function Page() {
             Sign up
           </Text>
         </View>
+        <View className={"w-full h-1 scale-y-[0.5] mt-6 bg-gray-800"}></View>
+
+        <OAuth />
       </View>
     </View>
   );
