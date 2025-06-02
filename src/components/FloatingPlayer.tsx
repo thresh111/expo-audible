@@ -1,12 +1,9 @@
 import { View, Text, Pressable, Image } from "react-native";
 
-import dummyBooks from "@/dummyBooks";
 import { Link } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import { useAudioPlayerStatus } from "expo-audio";
 import { usePlay } from "@/providers/PlayProvider";
-
-const book = dummyBooks[0];
 
 export default function FloatingPlayer() {
   const { player, book } = usePlay();

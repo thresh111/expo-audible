@@ -1,13 +1,10 @@
 import { View, Text, Pressable, Image } from "react-native";
-import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
+import { Entypo, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import dummyBooks from "@/dummyBooks";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PlaybackBar from "@/components/PlaybackBar";
-import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { useAudioPlayerStatus } from "expo-audio";
 import { usePlay } from "@/providers/PlayProvider";
-
-const book = dummyBooks[0];
 
 export default function Player() {
   const router = useRouter();
