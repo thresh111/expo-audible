@@ -3,13 +3,16 @@ import { View, Text, Pressable, Image } from "react-native";
 import dummyBooks from "@/dummyBooks";
 import { Link } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
-import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { useAudioPlayerStatus } from "expo-audio";
+import { usePlay } from "@/providers/PlayProvider";
 
 const book = dummyBooks[0];
 
 export default function FloatingPlayer() {
-  const player = useAudioPlayer({ uri: book.audio_url });
+  const { player, book } = usePlay();
   const playerStatus = useAudioPlayerStatus(player);
+
+  if (!book) return null;
 
   return (
     <Link href={"/player"} asChild>
@@ -21,7 +24,7 @@ export default function FloatingPlayer() {
         </View>
         <View className="flex-row gap-4 ">
           <AntDesign
-            name={playerStatus.playing ? "pause" : "play"}
+            name={player.isBuffering ? "loading2" : playerStatus.playing ? "pause" : "play"}
             size={24}
             hitSlop={20}
             color={"gainsboro"}

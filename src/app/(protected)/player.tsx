@@ -5,13 +5,14 @@ import dummyBooks from "@/dummyBooks";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PlaybackBar from "@/components/PlaybackBar";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { usePlay } from "@/providers/PlayProvider";
 
 const book = dummyBooks[0];
 
 export default function Player() {
   const router = useRouter();
 
-  const player = useAudioPlayer({ uri: book.audio_url });
+  const { player, book } = usePlay();
   const playerStatus = useAudioPlayerStatus(player);
 
   return (
