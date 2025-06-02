@@ -1,10 +1,11 @@
-import { AudioPlayer, useAudioPlayer } from "expo-audio";
-import { createContext, PropsWithChildren, useContext, useState } from "react";
+import { AudioPlayer, AudioStatus, useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 
 type PlayContextType = {
   player: AudioPlayer;
   book: any;
   setBook: (book: any) => void;
+  playStatus: AudioStatus;
 };
 
 const PlayContext = createContext<PlayContextType | null>(null);
@@ -12,8 +13,15 @@ const PlayContext = createContext<PlayContextType | null>(null);
 export default function PlayProvider({ children }: PropsWithChildren) {
   const [book, setBook] = useState<any | null>(null);
   const player = useAudioPlayer({ uri: book?.audio_url });
+  const playStatus = useAudioPlayerStatus(player);
 
-  return <PlayContext.Provider value={{ player, book, setBook }}>{children}</PlayContext.Provider>;
+  useEffect(() => {
+    if (book?.audio_url) {
+      player.play();
+    }
+  }, [book?.audio_url]);
+
+  return <PlayContext.Provider value={{ player, book, setBook, playStatus }}>{children}</PlayContext.Provider>;
 }
 
 export function usePlay() {

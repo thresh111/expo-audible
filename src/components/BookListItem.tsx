@@ -9,7 +9,7 @@ type BookListItemProps = {
 };
 
 export default function BookListItem({ book }: BookListItemProps) {
-  const { setBook } = usePlay();
+  const { setBook, playStatus, book: currentBook, player } = usePlay();
 
   return (
     <Link href={"/player"} asChild>
@@ -20,7 +20,18 @@ export default function BookListItem({ book }: BookListItemProps) {
           <Text className="text-gray-400">{book.author}</Text>
         </View>
         <View className="flex-row gap-4 ">
-          <AntDesign name={"playcircleo"} size={24} color={"gainsboro"} />
+          <Pressable
+            onPress={() => {
+              setBook(book);
+              playStatus.playing && currentBook?.id === book.id ? player.pause() : player.play();
+            }}
+          >
+            <AntDesign
+              name={currentBook?.id === book.id && playStatus.playing ? "pause" : "play"}
+              size={24}
+              color={"gainsboro"}
+            />
+          </Pressable>
           <AntDesign name={"download"} size={24} color={"gainsboro"} />
         </View>
       </Pressable>
