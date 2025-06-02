@@ -20,9 +20,7 @@ export default function Player() {
       <Pressable className={"absolute top-12 left-4 rounded-full p-2 bg-slate-800/80"} onPress={() => router.back()}>
         <Entypo name="chevron-down" size={24} color="white" />
       </Pressable>
-
       <Image source={{ uri: book.thumbnail_url }} className={"w-[80%] aspect-square rounded-3xl self-center mt-8"} />
-
       <View className={"gap-6 flex-1 justify-end w-full mb-8"}>
         <Text className="text-white text-2xl font-bold text-center">{book.title}</Text>
 

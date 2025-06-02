@@ -4,6 +4,7 @@ import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import PlayProvider from "@/providers/PlayProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const theme = {
   ...DarkTheme,
@@ -15,14 +16,18 @@ const theme = {
   },
 };
 
+const queryClient = new QueryClient();
+
 export default function RootLayout() {
   return (
     <ThemeProvider value={theme}>
-      <ClerkProvider tokenCache={tokenCache}>
-        <PlayProvider>
-          <Slot />
-        </PlayProvider>
-      </ClerkProvider>
+      <QueryClientProvider client={queryClient}>
+        <ClerkProvider tokenCache={tokenCache}>
+          <PlayProvider>
+            <Slot />
+          </PlayProvider>
+        </ClerkProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
