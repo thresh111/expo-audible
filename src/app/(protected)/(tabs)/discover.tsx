@@ -9,7 +9,10 @@ export default function Discover() {
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["books"],
-    queryFn: () => supabase.from("books").select("*").throwOnError(),
+    queryFn: async () => {
+      const { data } = await supabase.from("books").select("*").throwOnError();
+      return data as Book[];
+    },
   });
 
   if (isLoading) return <ActivityIndicator />;
@@ -18,7 +21,7 @@ export default function Discover() {
 
   return (
     <FlatList
-      data={(data?.data as Book[]) || []}
+      data={data || []}
       contentContainerClassName={"gap-4 p-2"}
       renderItem={({ item }) => <DiscoveryBookListItem book={item} key={item.id} />}
     />

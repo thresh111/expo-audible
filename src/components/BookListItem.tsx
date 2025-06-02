@@ -2,14 +2,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Image, Text, View, Pressable } from "react-native";
 import { usePlay } from "@/providers/PlayProvider";
 import { Link } from "expo-router";
-
-export type Book = {
-  id: string;
-  title: string;
-  author: string;
-  audio_url: string;
-  thumbnail_url?: string;
-};
+import { Book } from "@/types";
 
 type BookListItemProps = {
   book: Book;

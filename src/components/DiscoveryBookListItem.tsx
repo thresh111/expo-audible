@@ -1,8 +1,7 @@
 import { AntDesign } from "@expo/vector-icons";
 import { Image, Text, View, Pressable } from "react-native";
-import { usePlay } from "@/providers/PlayProvider";
 import { Link } from "expo-router";
-import { Book } from "./BookListItem";
+import { Book } from "@/types";
 import { useSupabase } from "@/lib/supabase";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUser } from "@clerk/clerk-expo";
