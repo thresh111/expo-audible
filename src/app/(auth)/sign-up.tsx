@@ -2,6 +2,7 @@ import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
+import OAuth from "@/components/OAuth";
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -119,6 +120,8 @@ export default function SignUpScreen() {
             Sign in
           </Text>
         </View>
+        <View className={"w-full h-1 scale-y-[0.5] mt-6 bg-gray-800"}></View>
+        <OAuth />
       </View>
     </View>
   );
