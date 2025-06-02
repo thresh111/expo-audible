@@ -1,8 +1,9 @@
-import { ActivityIndicator, FlatList, Text } from "react-native";
+import { FlatList, Text } from "react-native";
 import { useQuery } from "@tanstack/react-query";
-import BookListItem, { Book } from "@/components/BookListItem";
+import { Book } from "@/types";
 import { useSupabase } from "@/lib/supabase";
 import DiscoveryBookListItem from "@/components/DiscoveryBookListItem";
+import Loading from "@/components/Loading";
 
 export default function Discover() {
   const supabase = useSupabase();
@@ -15,7 +16,7 @@ export default function Discover() {
     },
   });
 
-  if (isLoading) return <ActivityIndicator />;
+  if (isLoading) return <Loading />;
 
   if (error) return <Text>Error:{error.message}</Text>;
 
